@@ -1,13 +1,11 @@
 package controller;
 
-import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
 public class WelcomController extends Controller{
 	
-	@ActionKey("/welcome")
 	public void welcome(){
-		setAttr("name", "��ӭ");
+		setAttr("name", "欢迎使用JFINAL，呵呵!");
 		render("welcome.jsp");
 	}
 	

@@ -2,6 +2,6 @@ package util;
 
 @SuppressWarnings("all")
 public class Constants {
-	//·ÃÎÊºó×º
+	//è¯·æ±‚åç¼€
 	public final static String REQUEST_SUFFIX = ".do";
 }

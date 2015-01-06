@@ -6,7 +6,6 @@
 package sysconfig;
 
 import model.TestModel;
-import plugin.RequestFilterHandler;
 
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -20,24 +19,23 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
 import controller.PlayController;
-import controller.TestController;
 import controller.WelcomController;
 
 public class SysConfig extends JFinalConfig{
 
 	/**
-	 * ÅäÖÃ³£Á¿
+	 * é¡¹ç›®é…ç½®ä¿¡æ¯
 	 */
 	@Override
 	public void configConstant(Constants arg0) {
 		// TODO Auto-generated method stub
-		//¼ÓÔØÊı¾İ¿âÅäÖÃĞÅÏ¢
+		//åŠ è½½æ•°æ®åº“é…ç½®
 		loadPropertyFile("db.properties");
-		//¿ª·¢Ä£Ê½
+		//è®¾ç½®å¼€å‘æ¨¡å¼
 		arg0.setDevMode(true);
-		//ÉèÖÃÒ³ÃæµÄ»ù´¡Â·¾¶
+		//åŸºç¡€è®¿é—®è·¯å¾„
 		arg0.setBaseViewPath("/WEB-INF/views/");
-		//ÉèÖÃÄ¬ÈÏÊÓÍ¼ÎªJSP
+		//å±•ç¤ºè§†å›¾è®¾ç½®
 		arg0.setViewType(ViewType.JSP);
 		arg0.setEncoding("UTF-8");
 		
@@ -45,18 +43,18 @@ public class SysConfig extends JFinalConfig{
 	}
 
 	/**
-	 * ÅäÖÃ´¦ÀíÆ÷
+	 * è¿‡è™‘é…ç½®
 	 */
 	@Override
 	public void configHandler(Handlers arg0) {
 		// TODO Auto-generated method stub
-		//ÉèÖÃÉÏÏÂÎÄÂ·¾¶
+		//ä¸Šä¸‹æ–‡è·¯å¾„
 		arg0.add(new ContextPathHandler("contextPath"));
-		arg0.add(new RequestFilterHandler());
+		//arg0.add(new RequestFilterHandler());
 	}
 
 	/**
-	 * ÅäÖÃÈ«¾ÖÀ¹½ØÆ÷
+	 * æ‹¦æˆªå™¨é…ç½®
 	 */
 	@Override
 	public void configInterceptor(Interceptors arg0) {
@@ -65,12 +63,12 @@ public class SysConfig extends JFinalConfig{
 	}
 	
 	/**
-	 * ÅäÖÃ²å¼ş
+	 * æ’ä»¶é…ç½®
 	 */
 	@Override
 	public void configPlugin(Plugins arg0) {
 		// TODO Auto-generated method stub
-		// ÅäÖÃC3p0Êı¾İ¿âÁ¬½Ó³Ø²å¼ş
+		// é…ç½®æ•°æ®åº“
 		C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("jdbcUrl"),getProperty("user"),getProperty("password"));
 		arg0.add(c3p0Plugin);
 		
@@ -82,13 +80,12 @@ public class SysConfig extends JFinalConfig{
 	}
 
 	/**
-	 * ÅäÖÃÂ·ÓÉ
+	 * é…ç½®è·¯ç”±
 	 */
 	@Override
 	public void configRoute(Routes arg0) {
 		// TODO Auto-generated method stub
 		arg0.add("/",WelcomController.class);
-		arg0.add("/test",TestController.class);
 		arg0.add("/play",PlayController.class);
 	}
 	

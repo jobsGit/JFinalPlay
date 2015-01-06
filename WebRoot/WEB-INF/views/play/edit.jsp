@@ -14,13 +14,14 @@
 </style>
 <script type="text/javascript" src="${contextPath}/js/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-function addTest(){
+function editTest(obj){
 	var name = $("input[name='name']").val();
 	var age =  $("input[name='age']").val();
+	var id = $(obj).attr("id");
 	$.ajax({
 	   type: "POST",
-	   url: "play/addTest",
-	   data: {"testModel.name":name,"testModel.age":age},
+	   url: "play/editTest",
+	   data: {"testModel.id":id,"testModel.name":name,"testModel.age":age},
 	   dataType: "json",
 	   success: function(data){
 	    	if(data.success){
@@ -34,22 +35,13 @@ function addTest(){
 </script>
 </head>
 <body>
-	<div align="center"><h4>WELCOME ${name }</h4></div>
+	<div align="center"><h4>${testModel.id }数据更新</h4></div>
 	<div align="center">
 		<table cellpadding="0" cellspacing="0">
-			<tr align="center">
-				<td colspan="2">系统数据</td>
-				<td><a href="${contextPath}/play/play">查看</a></td>
-			</tr>
 			<tr>
-				<td> 名称 <input type="text" name="name"></td> 
-				<td> 年龄 <input type="text" name="age"></td>
-				<td><a href="javascript:void();" onclick="addTest();">添加</a></td>
-			</tr>
-			<tr>
-				<td> 名称 <input type="text" name="name"></td> 
-				<td> 年龄 <input type="text" name="age"></td>
-				<td><a href="javascript:void();" onclick="addTest();">更新</a></td>
+				<td> 名称 <input type="text" name="name" value="${testModel.name }"></td> 
+				<td> 年龄 <input type="text" name="age" value="${testModel.age }"></td>
+				<td><a id="${testModel.id }" href="javascript:void();" onclick="editTest(this);">更新</a></td>
 			</tr>
 		</table>
 	</div>

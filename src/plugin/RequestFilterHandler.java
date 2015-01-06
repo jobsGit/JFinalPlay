@@ -3,8 +3,6 @@ package plugin;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.Constants;
-
 import com.jfinal.handler.Handler;
 
 public class RequestFilterHandler extends Handler{
