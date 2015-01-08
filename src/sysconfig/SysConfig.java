@@ -85,7 +85,7 @@ public class SysConfig extends JFinalConfig{
 	@Override
 	public void configRoute(Routes arg0) {
 		// TODO Auto-generated method stub
-		arg0.add("/",WelcomController.class);
+		arg0.add("/login",WelcomController.class,"/");
 		arg0.add("/play",PlayController.class);
 	}
 	

@@ -32,22 +32,6 @@ function delTest(obj){
 	});
 }
 
-function toEditTest(obj){
-	var id = $(obj).prev().attr("id");
-	$.ajax({
-	   type: "POST",
-	   url: "toEditTest",
-	   data: {"id":id},
-	   dataType: "json",
-	   success: function(data){
-	    	if(data.success){
-	    		window.location.href="play";
-	    	}else{
-	    		alert("删除数据出错!");
-	    	}
-	   	}
-	});
-}
 
 </script>
 </head>
@@ -65,7 +49,7 @@ function toEditTest(obj){
 			<td>${model.id }</td>
 			<td>${model.name }</td>
 			<td>${model.age }</td>
-			<td><a id="${model.id }" href="javascript:void(0);" onclick="delTest(this);">删除</a> &#12288;<a href="javascript:void(0);" onclick="toEditTest(this);">更新</a></td>
+			<td><a id="${model.id }" href="javascript:void(0);" onclick="delTest(this);">删除</a> &#12288;<a href="toEditTest?id=${model.id }">更新</a></td>
 		</tr>
 	</c:forEach>
 </table>

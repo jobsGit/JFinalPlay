@@ -6,7 +6,6 @@ import java.util.List;
 import model.TestModel;
 
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 
 public class PlayController extends Controller{
@@ -31,29 +30,23 @@ public class PlayController extends Controller{
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			resultMap.put("success", false);
 		}
 		renderJson(resultMap);
 	}
 	
 	public void delTest(){
 		HashMap<String,Object> resultMap = new HashMap<String,Object>();
-		try{
-			int flag = Db.update("delete from bvc_test where id = ?", getPara("id"));
-			if(flag>0){
-				resultMap.put("success", true);
-			}else{
-				resultMap.put("success", false);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
+		boolean flag = TestModel.me.delTest(getPara("id"));
+		if(flag){
+			resultMap.put("success", true);
+		}else{
 			resultMap.put("success", false);
 		}
 		renderJson(resultMap);
 	}
 	
 	
-	public void toEditPage(){
+	public void toEditTest(){
 		try{
 			TestModel testModel = getModel(TestModel.class).findById(getPara("id"));
 			setAttr("testModel", testModel);

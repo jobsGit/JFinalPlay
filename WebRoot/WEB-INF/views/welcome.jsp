@@ -4,17 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JFinal测试</title>
+<title>JFinal测试登录</title>
 <style type="text/css">
 	table td{
 		text-align:center;
 		border-bottom:1px solid black;
+		border-top:1px solid black;
 		line-height: 50px;
 	}
 </style>
 <script type="text/javascript" src="${contextPath}/js/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-function addTest(){
+function login(){
 	var name = $("input[name='name']").val();
 	var age =  $("input[name='age']").val();
 	$.ajax({
@@ -24,7 +25,7 @@ function addTest(){
 	   dataType: "json",
 	   success: function(data){
 	    	if(data.success){
-	    		window.location.href="play/play";
+	    		window.location.href="welcome";
 	    	}else{
 	    		alert("保存数据出错!");
 	    	}
@@ -34,22 +35,13 @@ function addTest(){
 </script>
 </head>
 <body>
-	<div align="center"><h4>WELCOME ${name }</h4></div>
+	<div align="center"><h4>WELCOME JFINAL</h4></div>
 	<div align="center">
 		<table cellpadding="0" cellspacing="0">
-			<tr align="center">
-				<td colspan="2">系统数据</td>
-				<td><a href="${contextPath}/play/play">查看</a></td>
-			</tr>
 			<tr>
 				<td> 名称 <input type="text" name="name"></td> 
 				<td> 年龄 <input type="text" name="age"></td>
-				<td><a href="javascript:void();" onclick="addTest();">添加</a></td>
-			</tr>
-			<tr>
-				<td> 名称 <input type="text" name="name"></td> 
-				<td> 年龄 <input type="text" name="age"></td>
-				<td><a href="javascript:void();" onclick="addTest();">更新</a></td>
+				<td><a href="javascript:void();" onclick="login();">进入</a></td>
 			</tr>
 		</table>
 	</div>
