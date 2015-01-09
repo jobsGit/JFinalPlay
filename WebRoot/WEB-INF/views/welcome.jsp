@@ -20,14 +20,14 @@ function login(){
 	var age =  $("input[name='age']").val();
 	$.ajax({
 	   type: "POST",
-	   url: "play/addTest",
+	   url: "login.do",
 	   data: {"testModel.name":name,"testModel.age":age},
 	   dataType: "json",
 	   success: function(data){
 	    	if(data.success){
-	    		window.location.href="welcome";
+	    		window.location.href="play/toAdd.do";
 	    	}else{
-	    		alert("保存数据出错!");
+	    		alert("登录失败!");
 	    	}
 	   	}
 	});

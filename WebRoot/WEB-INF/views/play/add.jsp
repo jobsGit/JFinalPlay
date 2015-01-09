@@ -19,12 +19,12 @@ function addTest(){
 	var age =  $("input[name='age']").val();
 	$.ajax({
 	   type: "POST",
-	   url: "play/addTest",
+	   url: "addTest.do",
 	   data: {"testModel.name":name,"testModel.age":age},
 	   dataType: "json",
 	   success: function(data){
 	    	if(data.success){
-	    		window.location.href="play/play";
+	    		window.location.href="play.do";
 	    	}else{
 	    		alert("保存数据出错!");
 	    	}
@@ -34,12 +34,13 @@ function addTest(){
 </script>
 </head>
 <body>
+	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div align="center"><h4>WELCOME ${name }</h4></div>
 	<div align="center">
 		<table cellpadding="0" cellspacing="0">
 			<tr align="center">
 				<td colspan="2">系统数据</td>
-				<td><a href="${contextPath}/play/play">查看</a></td>
+				<td><a href="${contextPath}/play/play.do">查看</a></td>
 			</tr>
 			<tr>
 				<td> 名称 <input type="text" name="name"></td> 

@@ -10,6 +10,11 @@ import com.jfinal.plugin.activerecord.Page;
 
 public class PlayController extends Controller{
 	
+	
+	public void toAdd(){
+		render("add.jsp");
+	}
+	
 
 	public void play(){
 		Page<TestModel> pageModel = TestModel.me.queryAll(1,10);
@@ -74,5 +79,9 @@ public class PlayController extends Controller{
 		renderJson(resultMap);
 	}
 	
+	public void exitSys(){
+		removeSessionAttr("testModel");
+		redirect("/toLogin.do");
+	}
 	
 }

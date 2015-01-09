@@ -5,6 +5,8 @@
  */
 package sysconfig;
 
+import plugin.AuthInterceptor;
+import plugin.RequestFilterHandler;
 import model.TestModel;
 
 import com.jfinal.config.Constants;
@@ -15,6 +17,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
@@ -38,8 +41,6 @@ public class SysConfig extends JFinalConfig{
 		//展示视图设置
 		arg0.setViewType(ViewType.JSP);
 		arg0.setEncoding("UTF-8");
-		
-		
 	}
 
 	/**
@@ -50,7 +51,7 @@ public class SysConfig extends JFinalConfig{
 		// TODO Auto-generated method stub
 		//上下文路径
 		arg0.add(new ContextPathHandler("contextPath"));
-		//arg0.add(new RequestFilterHandler());
+		arg0.add(new RequestFilterHandler());
 	}
 
 	/**
@@ -59,7 +60,8 @@ public class SysConfig extends JFinalConfig{
 	@Override
 	public void configInterceptor(Interceptors arg0) {
 		// TODO Auto-generated method stub
-		
+		//拦截session
+		arg0.add(new AuthInterceptor());
 	}
 	
 	/**
@@ -85,7 +87,7 @@ public class SysConfig extends JFinalConfig{
 	@Override
 	public void configRoute(Routes arg0) {
 		// TODO Auto-generated method stub
-		arg0.add("/login",WelcomController.class,"/");
+		arg0.add("/",WelcomController.class);
 		arg0.add("/play",PlayController.class);
 	}
 	

@@ -21,12 +21,12 @@ function editTest(obj){
 	var id = $(obj).attr("id");
 	$.ajax({
 	   type: "POST",
-	   url: "editTest",
+	   url: "editTest.do",
 	   data: {"testModel.id":id,"testModel.name":name,"testModel.age":age},
 	   dataType: "json",
 	   success: function(data){
 	    	if(data.success){
-	    		window.location.href="play";
+	    		window.location.href="play.do";
 	    	}else{
 	    		alert("保存数据出错!");
 	    	}
@@ -36,6 +36,7 @@ function editTest(obj){
 </script>
 </head>
 <body>
+	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div align="center"><h4>${testModel.id }数据更新</h4></div>
 	<div align="center">
 		<table cellpadding="0" cellspacing="0">
